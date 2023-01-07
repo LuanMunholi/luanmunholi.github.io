@@ -1,50 +1,66 @@
-<!DOCTYPE html>
 <html>
 <head>
-	<title>Video Game Menu</title>
-	<style type="text/css">
-		body {
-			background-image: url('background.jpg');
-			background-size: cover;
-			margin: 0;
-			padding: 0;
-		}
-		.container {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			height: 100vh;
-		}
-		.button {
-			display: inline-block;
-			width: 200px;
-			height: 50px;
-			background-image: url('button.png');
-			background-size: cover;
-			border: none;
-			cursor: pointer;
-			transition: transform 0.2s ease-in-out;
-		}
-		.button:hover {
-			transform: scale(1.1);
-		}
-	</style>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: url("video.mp4") no-repeat;
+      background-size: cover;
+    }
+    .button {
+      display: block;
+      width: 200px;
+      height: 200px;
+      margin: 50px auto;
+      background-image: url("button.png");
+      background-size: cover;
+      border: none;
+      outline: none;
+    }
+    .button:hover {
+      background-image: url("button-hover.png");
+    }
+    .button:active {
+      background-image: url("button-active.png");
+    }
+    .button + .button {
+      margin-top: 20px;
+    }
+    #audio-control {
+      width: 100%;
+      height: 40px;
+      margin: 20px 0;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    #audio-control input[type="range"] {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      cursor: pointer;
+    }
+    #audio-control input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      background: white;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-	<video src="background.mp4" loop autoplay muted></video>
-	<audio src="music.mp3" loop autoplay></audio>
-	<div class="container">
-		<button class="button" onclick="window.location.href='page1.html'"></button>
-		<button class="button" onclick="window.location.href='page2.html'"></button>
-		<button class="button" onclick="window.location.href='page3.html'"></button>
-	</div>
-	<input type="range" min="0" max="100" value="100" class="slider" id="volume">
-	<script type="text/javascript">
-		var audio = document.querySelector('audio');
-		var slider = document.getElementById('volume');
-		slider.oninput = function() {
-			audio.volume = this.value / 100;
-		}
-	</script>
+  <audio src="music.mp3" loop autoplay></audio>
+  <div id="audio-control">
+    <input type="range" min="0" max="1" step="0.1" value="1" oninput="document.querySelector('audio').volume=value">
+  </div>
+  <button class="button" onclick="location.href='page1.html'"></button>
+  <button id="button1" style="width: 200px; height: 50px; font-size: 20px;">Profile</button>
+  <button class="button" onclick="location.href='page2.html'"></button>
+  <button class="button" onclick="location.href='page3.html'"></button>
 </body>
 </html>
