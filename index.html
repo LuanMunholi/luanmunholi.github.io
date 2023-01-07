@@ -1,66 +1,33 @@
+<!DOCTYPE html>
 <html>
 <head>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      background: url("video.mp4") no-repeat;
-      background-size: cover;
-    }
-    .button {
-      display: block;
-      width: 200px;
-      height: 200px;
-      margin: 50px auto;
-      background-image: url("button.png");
-      background-size: cover;
-      border: none;
-      outline: none;
-    }
-    .button:hover {
-      background-image: url("button-hover.png");
-    }
-    .button:active {
-      background-image: url("button-active.png");
-    }
-    .button + .button {
-      margin-top: 20px;
-    }
-    #audio-control {
-      width: 100%;
-      height: 40px;
-      margin: 20px 0;
-      background: rgba(0, 0, 0, 0.5);
-      border-radius: 20px;
-      overflow: hidden;
-    }
-    #audio-control input[type="range"] {
-      -webkit-appearance: none;
-      width: 100%;
-      height: 100%;
-      background: transparent;
-      cursor: pointer;
-    }
-    #audio-control input[type="range"]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: 20px;
-      height: 20px;
-      background: white;
-      border-radius: 50%;
-      cursor: pointer;
-    }
-  </style>
+  <title>RPG Game Menu</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="script.js"></script>
 </head>
 <body>
-  <audio src="music.wav" loop autoplay></audio>
-  <div id="audio-control">
-    <input type="range" min="0" max="1" step="0.1" value="1" oninput="document.querySelector('audio').volume=value">
+  <!-- Muted background video -->
+  <video id="bg-video" autoplay loop muted>
+    <source src="video.mp4" type="video/mp4">
+  </video>
+
+  <!-- Music player -->
+  <audio id="bg-music" src="music.mp3" type="audio/mp3" autoplay loop></audio>
+
+  <!-- Music volume slider -->
+  <div id="volume-container">
+    <label for="volume-slider">Volume Settings</label>
+    <input type="range" id="volume-slider" min="0" max="100" value="50">
   </div>
-  <button class="button" onclick="location.href='page1.html'"></button>
-  <button id="button1" style="width: 200px; height: 50px; font-size: 20px;">Profile</button>
-  <button class="button" onclick="location.href='page2.html'"></button>
-  <button class="button" onclick="location.href='page3.html'"></button>
+
+  <!-- Project logo -->
+  <img src="logo.png" id="logo">
+
+  <!-- Navigation buttons -->
+  <div id="nav-buttons">
+    <button class="nav-button" id="profile-button">Profile</button>
+    <button class="nav-button" id="schedule-button">Schedule</button>
+    <button class="nav-button" id="ranking-button">Ranking</button>
+  </div>
 </body>
 </html>
