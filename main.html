@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>RPG Game Menu</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+  <!-- Muted background video -->
+  <video id="bg-video" muted autoplay loop>
+    <source src="video.mp4" type="video/mp4">
+  </video>
+
+  <div id="ball"></div>
+
+  <div id="menu-buttons">
+    <button class="menu-buttons" id="play-button">PLAY</button>
+    <button class="menu-buttons" id="stop-button">STOP GAME</button>
+  </div>
+  </div>
+
+  <!-- MAIN MENU -->
+  <div id="main-menu">
+    <!-- Play button -->
+    <div class="buttons">
+      <div id="nav-buttons">
+        <button class="nav-button" id="gd-button">Game Design</button>
+        <button class="nav-button" id="av-button">Audiovisual</button>
+        <button class="nav-button" id="pg-button">Programação</button>
+        <button class="nav-button" id="gm-button">Gestão e Marketing</button>
+        <button class="nav-button" id="agenda-button">Agenda Geral</button>
+      </div>
+    </div>
+  </div>
+  <!-- END MAIN MENU -->
+
+  <div class="menu-buttons" id="audio-icon">
+    <img src="mute-icon.png" id="mute-icon">
+    <img src="unmute-icon.png" id="unmute-icon" style="display: none;">
+  </div>
+
+  <!-- Music player -->
+  <audio id="bg-music" src="music.mp3" type="audio/mp3" loop></audio>
+
+  <!-- Project logo -->
+  <img src="logo.png" id="logo">
+
+  <!-- Music volume slider -->
+  <div id="volume-container">
+    <label for="volume-slider">Volume Settings</label>
+    <input type="range" id="volume-slider" min="0" max="100" value="0">
+    <button id="apply-button">Apply</button>
+  </div>
+
+  <div id="game" style="display: none;">
+    <!-- Game elements go here -->
+    <!-- Navigation buttons -->
+    <div class="buttons">
+      <div id="nav-buttons">
+        <button class="nav-button" id="profile-button">Profile</button>
+        <button class="nav-button" id="schedule-button">Schedule</button>
+        <button class="nav-button" id="ranking-button">Ranking</button>
+        <button class="nav-button" id="back-button">BACK</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script_main.js"></script>
+  <script src="game.js"></script>
+</body>
+
+</html>

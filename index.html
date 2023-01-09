@@ -3,21 +3,22 @@
 <head>
   <title>RPG Game Menu</title>
   <link rel="stylesheet" type="text/css" href="style.css">
-  <script src="script.js"></script>
 </head>
+
 <body>
   <!-- Muted background video -->
-  <video id="bg-video" autoplay loop muted>
+  <video id="bg-video" muted autoplay loop>
     <source src="video.mp4" type="video/mp4">
   </video>
 
   <!-- Music player -->
-  <audio id="bg-music" src="music.mp3" type="audio/mp3" autoplay loop></audio>
+  <audio id="bg-music" src="music.mp3" type="audio/mp3" loop></audio>
 
   <!-- Music volume slider -->
   <div id="volume-container">
     <label for="volume-slider">Volume Settings</label>
-    <input type="range" id="volume-slider" min="0" max="100" value="50">
+    <input type="range" id="volume-slider" min="0" max="100" value="0">
+    <button id="apply-button">Apply</button>
   </div>
 
   <!-- Project logo -->
@@ -25,9 +26,9 @@
 
   <!-- Navigation buttons -->
   <div id="nav-buttons">
-    <button class="nav-button" id="profile-button">Profile</button>
-    <button class="nav-button" id="schedule-button">Schedule</button>
-    <button class="nav-button" id="ranking-button">Ranking</button>
+    <button class="nav-button" id="play-button">PLAY</button>
   </div>
 </body>
+<script src="script_index.js"></script>
+
 </html>

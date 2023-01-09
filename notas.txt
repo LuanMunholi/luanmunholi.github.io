@@ -1,0 +1,29 @@
+Write a JavaScript code for ball, considering:
+- The ball will spawn when the players hit the play-button;
+- The ball can't spawn in a location that already exist a active element;
+- The ball will start at a random position of the screen;
+- The ball will bounce in any element and screen corners in the page;
+- The ball will not bounce in elements that is disabled;
+- The ball will start with a constant velocity;
+- The ball will have a mass, speed, acceleration and the bounce force;
+- The ball will be attracted by the gravity of the black-hole;
+- The ball can be swallowed by the black-hole;
+- The ball will freeze when the players hit the stop-button.
+
+How the player will be able to create and delete black holes
+How the game will keep track of points and determine when the player has won or lost
+How the game will respond to user input, such as mouse clicks
+How the game will update the positions of different game elements on the screen
+A scoring system: You could use JavaScript to keep track of the player's score and display it on the page.
+Power-ups: You could add power-ups to the game that give the player temporary abilities, such as the ability to create multiple black holes at once or to make the ball move faster.
+Sound effects: You could use the HTML5 audio element to add sound effects to the game, such as a sound that plays when the ball bounces off a wall or a sound that plays when the player destroys an object.
+Visual effects: You could use CSS3 transitions and animations to add visual effects to the game, such as a glowing effect when the player creates a black hole or a particle effect when the player destroys an object.
+Multiple levels: You could create multiple levels for the player to progress through, with each level becoming progressively more difficult.
+A leaderboard: You could create a leaderboard that tracks the top scores of all players and allows players to compare their scores to others.
+A pause button: You could add a pause button that allows the player to pause the game and resume it later.
+
+
+  <!-- Muted background video -->
+  <video id="bg-video" muted autoplay loop>
+    <source src="video.mp4" type="video/mp4">
+  </video>

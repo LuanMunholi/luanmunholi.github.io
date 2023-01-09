@@ -1,121 +1,251 @@
-/* Muted background video */
-#bg-video {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-    opacity: 1;
-  }
-  
-  /* Music player */
-  #bg-music {
-    display: block;
-  }
-  
-  /* Music volume slider */
-  #volume-container {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-    color: white;
-    font-weight: bold;
-    font-size: 20px;
-    font-family: 'Fondamento', cursive;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Add shadow to text */
-  }
-  
-  #volume-container label {
-    margin-right: 10px;
-  }
-  
-  #volume-slider {
-    width: 300px;
-    height: 20px;
-  }
-  
-  #volume {
-    width: 100%;
-  }
-  
+    body {
+        background-color: black;
+        background-image: url("background.jpg");
+    }
 
-  /* Project logo */
-  #logo {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 50px;
-    height: 50px;
-    z-index: 1;
-  }
-  
-  /* Navigation buttons */
-  #nav-buttons {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: space-between;
-    width: 50%;
-    z-index: 1;
-  }
+    /* Muted background video */
+    #bg-video {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+        opacity: 0.15;
+    }
 
-  @import url('https://fonts.googleapis.com/css2?family=Fondamento&display=swap');
-  
-  .nav-button {
-    cursor: url("custom-cursor1.png"), auto;
-    width: 300px;
-    height: 90px;
-    background-image: url("button.png");
-    background-size: cover;
-    background-position: center;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    transition: width 0.2s, height 0.2s;
-    font-family: 'Fondamento', cursive;
-    font-size: 20px;
-    color: white;
-    text-shadow: -1px 1px 5px rgb(243, 0, 0);
-  }
-  
-  .nav-button:hover {
-    cursor: url("custom-cursor2.png"), auto;
-    width: 305px;
-    height: 95px;
-    background-image: url("button-hover.png");
-    background-size: cover;
-    background-position: center;
-    background-color: transparent;
-    font-family: 'Fondamento', cursive;
-    font-weight: bold;
-    font-size: 25px;
-    color: white;
-  }
-  
-  .nav-button:active {
-    cursor: url("custom-cursor2.png"), auto;
-    width: 305px;
-    height: 95px;
-    background-image: url("button-active.png");
-    background-size: cover;
-    background-position: center;
-    background-color: transparent;
-    font-family: 'Fondamento', cursive;
-    font-weight: bold;
-    font-size: 25px;
-    color: white;
-  }
+    /* Music player */
+    #bg-music {
+        display: block;
+    }
 
-  /* Custom mouse pointer */
-* {
-    cursor: url("custom-cursor1.png"), auto;
-  }
-  
+    /* Music volume slider */
+    #volume-container {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        font-family: 'Fondamento', cursive;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    #volume-container label {
+        margin-right: 10px;
+    }
+
+    #volume-slider {
+        width: 300px;
+        height: 20px;
+    }
+
+    #volume {
+        width: 100%;
+    }
+
+    /* Project logo */
+    #logo {
+        position: flex;
+        top: 0.5;
+        right: 0.5;
+        width: 50px;
+        height: 50px;
+        z-index: 1;
+    }
+
+    /* Navigation buttons */
+    #nav-buttons {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        z-index: 1;
+    }
+
+    #menu-buttons {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        font-family: 'Fondamento', cursive;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    #audio-icon {
+        position: fixed;
+        bottom: 0px;
+        margin-right: 40px;
+        width: 40px;
+        height: 40px;
+        background-color: white;
+        opacity: 0.5;
+    }
+
+    #mute-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    #unmute-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Fondamento&display=swap');
+
+    .bbutton {
+        cursor: url("custom-cursor1.png"), auto;
+        width: 150px;
+        height: 45px;
+        background-image: url("button.png");
+        background-size: cover;
+        background-position: center;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        transition: width 0.2s, height 0.2s;
+        font-family: 'Fondamento', cursive;
+        font-size: 10px;
+        color: white;
+        text-shadow: -1px 1px 5px rgb(243, 0, 0);
+    }
+
+    .bbutton:hover {
+        cursor: url("custom-cursor2.png"), auto;
+        width: 155px;
+        height: 50px;
+        background-image: url("button-hover.png");
+        background-size: cover;
+        background-position: center;
+        background-color: transparent;
+        font-family: 'Fondamento', cursive;
+        font-weight: bold;
+        font-size: 13px;
+        color: white;
+    }
+
+    .bbutton:active {
+        cursor: url("custom-cursor2.png"), auto;
+        width: 155px;
+        height: 50px;
+        background-image: url("button-active.png");
+        background-size: cover;
+        background-position: center;
+        background-color: transparent;
+        font-family: 'Fondamento', cursive;
+        font-weight: bold;
+        font-size: 13px;
+        color: white;
+    }
+
+    .nav-button {
+        cursor: url("custom-cursor1.png"), auto;
+        width: 300px;
+        height: 90px;
+        background-image: url("button.png");
+        background-size: cover;
+        background-position: center;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        transition: width 0.2s, height 0.2s;
+        font-family: 'Fondamento', cursive;
+        font-size: 20px;
+        color: white;
+        text-shadow: -1px 1px 5px rgb(243, 0, 0);
+    }
+
+    .nav-button:hover {
+        cursor: url("custom-cursor2.png"), auto;
+        width: 305px;
+        height: 95px;
+        background-image: url("button-hover.png");
+        background-size: cover;
+        background-position: center;
+        background-color: transparent;
+        font-family: 'Fondamento', cursive;
+        font-weight: bold;
+        font-size: 25px;
+        color: white;
+    }
+
+    .nav-button:active {
+        cursor: url("custom-cursor2.png"), auto;
+        width: 305px;
+        height: 95px;
+        background-image: url("button-active.png");
+        background-size: cover;
+        background-position: center;
+        background-color: transparent;
+        font-family: 'Fondamento', cursive;
+        font-weight: bold;
+        font-size: 25px;
+        color: white;
+    }
+
+    .menu-buttons:hover {
+        cursor: url("custom-cursor2.png"), auto;
+    }
+
+    .menu-buttons:active {
+        cursor: url("custom-cursor2.png"), auto;
+    }
+
+    /* Custom mouse pointer */
+    * {
+        cursor: url("custom-cursor1.png"), auto;
+    }
+
+    #gd-button {
+        background-image: url("gd-button.png");
+        color: white;
+        text-shadow: -1px 1px 5px rgb(243, 138, 0);
+    }
+
+    #pg-button {
+        background-image: url("pg-button.png");
+        color: white;
+        text-shadow: -1px 1px 5px rgb(177, 0, 184);
+    }
+
+    #av-button {
+        background-image: url("av-button.png");
+        color: white;
+        text-shadow: -1px 1px 5px rgb(0, 60, 255);
+    }
+
+    #gm-button {
+        background-image: url("gm-button.png");
+        color: white;
+        text-shadow: -1px 1px 5px rgb(0, 216, 90);
+    }
+
+    #stop-button {
+        margin-left: 10px;
+    }
+
+    #play-button {
+        margin-left: 10px;
+    }
+
+    #enable-audio-button {
+        background-image: url("mute-icon.png");
+    }
+
+    #back-button {
+        transform: scale(0.5);
+    }
