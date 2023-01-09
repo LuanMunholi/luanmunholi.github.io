@@ -1,31 +1,156 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>Ball Game</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <style>
+    #game-container {
+      width: 500px;
+      height: 500px;
+      border: 1px solid black;
+      position: relative;
+      margin: 0 auto;
+    }
+
+    .black-hole {
+      width: 50px;
+      height: 50px;
+      background-color: black;
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .ball {
+      width: 25px;
+      height: 25px;
+      background-color: red;
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .object {
+      width: 25px;
+      height: 25px;
+      background-color: green;
+      border-radius: 50%;
+      position: absolute;
+    }
+  </style>
 </head>
+
 <body>
-  <div id="game-container">
-    <!-- Ball element -->
-    <div id="ball"></div>
+  <div id="game-container"></div>
+  <script>
+    const gameContainer = document.getElementById('game-container');
+    let ball = null;
+    let blackHoles = [];
+    let object = null;
 
-    <!-- Black hole element -->
-    <div id="black-hole"></div>
+    function randomIntFromRange(min, max) {
+      return Math.floor(Math.random() * (max - min + 1) + min);
+    }
 
-    <!-- Object element -->
-    <div id="object"></div>
+    function createBall() {
+      const ball = document.createElement('div');
+      ball.classList.add('ball');
+      ball.style.left = `${randomIntFromRange(0, gameContainer.offsetWidth - ball.offsetWidth)}px`;
+      ball.style.top = `${randomIntFromRange(0, gameContainer.offsetHeight - ball.offsetHeight)}px`;
+      gameContainer.appendChild(ball);
+      ball.velocityX = 2;
+      ball.velocityY = 2;
+      return ball;
+    }
 
-      <!-- Play button -->
-    <div class="button">
-      <button class="nav-button" id="play-button">Play</button>
 
-      <!-- Stop button -->
-      <button class="nav-button" class="button" id="stop-button">Stop</button>
-    </div>
-    <!-- Score element -->
-    <div id="score">0</div>
-  
-  </div>
-  <script src="game.js"></script>
+    function createObject() {
+      const object = document.createElement('div');
+      object.classList.add('object');
+      object.style.left = `${randomIntFromRange(0, gameContainer.offsetWidth - object.offsetWidth)}px`;
+      object.style.top = `${randomIntFromRange(0, gameContainer.offsetHeight - object.offsetHeight)}px`;
+      gameContainer.appendChild(object);
+      object.hits = 0;
+      return object;
+    }
+
+    function createBlackHole(event) {
+      const blackHole = document.createElement('div');
+      blackHole.classList.add('black-hole');
+      blackHole.style.left = `${event.clientX - gameContainer.offsetLeft - blackHole.offsetWidth / 2}px`;
+      blackHole.style.top = `${event.clientY - gameContainer.offsetTop - blackHole.offsetHeight / 2}px`;
+      gameContainer.appendChild(blackHole);
+      blackHoles.push(blackHole);
+    }
+
+    function deleteBlackHole(event) {
+      const blackHole = blackHoles.find(bh => {
+        return bh.offsetLeft < event.clientX - gameContainer.offsetLeft &&
+          bh.offsetTop < event.clientY - gameContainer.offsetTop &&
+          bh.offsetLeft + bh.offsetWidth > event.clientX - gameContainer.offsetLeft &&
+          bh.offsetTop + bh.offsetHeight > event.clientY - gameContainer.offsetTop;
+      });
+      if (blackHole) {
+        gameContainer.removeChild(blackHole);
+        blackHoles = blackHoles.filter(bh => bh !== blackHole);
+      }
+    }
+
+    function updateBallPosition() {
+  if (!ball) {
+    ball = createBall();
+  }
+  const ballRect = ball.getBoundingClientRect();
+  const objectRect = object.getBoundingClientRect();
+  if (ballRect.left < 0 || ballRect.right > gameContainer.offsetWidth) {
+    ball.velocityX *= -1;
+  }
+  if (ballRect.top < 0 || ballRect.bottom > gameContainer.offsetHeight) {
+    ball.velocityY *= -1;
+  }
+  for (let blackHole of blackHoles) {
+    const blackHoleRect = blackHole.getBoundingClientRect();
+    if (ballRect.left + ballRect.width / 2 > blackHoleRect.left &&
+        ballRect.top + ballRect.height / 2 > blackHoleRect.top &&
+        ballRect.left + ballRect.width / 2 < blackHoleRect.left + blackHoleRect.width &&
+        ballRect.top + ballRect.height / 2 < blackHoleRect.top + blackHoleRect.height) {
+      gameContainer.removeChild(ball);
+      ball = null;
+      blackHole.width += 50;
+      blackHole.height += 50;
+      createBall();
+      break;
+    }
+  }
+  if (objectRect.left < ballRect.left + ballRect.width &&
+      objectRect.top < ballRect.top + ballRect.height &&
+      objectRect.left + objectRect.width > ballRect.left &&
+      objectRect.top + objectRect.height > ballRect.top) {
+    object.disabled = true;
+    setTimeout(() => {
+      object.disabled = false;
+    }, 1000);
+    object.hits++;
+    if (object.hits === 3) {
+      gameContainer.removeChild(object);
+      createObject();
+    }
+  }
+  ball.style.left = `${ball.offsetLeft + ball.velocityX}px`;
+  ball.style.top = `${ball.offsetTop + ball.velocityY}px`;
+}
+
+
+    function init() {
+      ball = createBall();
+      object = createObject();
+      ball.velocityX = 2;
+      ball.velocityY = 2;
+      gameContainer.addEventListener('click', createBlackHole);
+      gameContainer.addEventListener('contextmenu', deleteBlackHole);
+      setInterval(updateBallPosition, 10);
+    }
+
+
+    init();
+  </script>
 </body>
+
 </html>

@@ -1,5 +1,3 @@
-let interacted = false;
-let block = true;
 const audioIcon = document.getElementById("audio-icon");
 const muteIcon = document.getElementById("mute-icon");
 const unmuteIcon = document.getElementById("unmute-icon");
@@ -7,21 +5,15 @@ const unmuteIcon = document.getElementById("unmute-icon");
 audioIcon.addEventListener("click", function () {
     if (muteIcon.style.display === "block") {
         const volume = document.getElementById("volume-slider").value;
+        const music = document.getElementById("bg-music");
         const normalizedVolume = volume / 100;
-        const audioElements = document.getElementsByTagName("audio");
-        for (const audio of audioElements) {
-            audio.volume = normalizedVolume;
-        }
-        interacted = true;
+        music.volume = normalizedVolume;
+        music.play();
         muteIcon.style.display = "none";
         unmuteIcon.style.display = "block";
     } else {
-        const audioElements = document.getElementsByTagName("audio");
-        for (const audio of audioElements) {
-            audio.volume = 0;
-        }
-        interacted = false;
-        block = true;
+        const music = document.getElementById("bg-music");
+        music.volume = 0;
         muteIcon.style.display = "block";
         unmuteIcon.style.display = "none";
     }
@@ -29,8 +21,6 @@ audioIcon.addEventListener("click", function () {
 
 // Set music volume according to slider value
 document.getElementById("apply-button").addEventListener("click", function () {
-
-    if (!block) interacted = true;
 
     // Get the value of the volume slider
     const volume = document.getElementById("volume-slider").value;
@@ -49,16 +39,6 @@ document.getElementById("apply-button").addEventListener("click", function () {
     for (const video of videoElements) {
         video.volume = normalizedVolume;
     }
-
-    // Play the audio and video elements
-    for (const video of videoElements) {
-        video.play();
-    }
-
-    if (!interacted) {
-        document.getElementById("bg-music").play();
-        for (const audio of audioElements) audio.volume = 0;
-    } 
 
 });
 
@@ -114,7 +94,7 @@ const playSfx = () => {
     const sfx = new Audio('sfx.mp3');
     sfx.preload = 'auto';
     sfx.volume = normalizedVolume;
-    if (interacted) sfx.play();
+    sfx.play();
 };
 
 // Add 'mouseover' event listeners to each button

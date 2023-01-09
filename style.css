@@ -23,10 +23,10 @@
 
     /* Music volume slider */
     #volume-container {
-        position: absolute;
-        bottom: 0;
+        position: fixed;
+        bottom: 1%;
         left: 50%;
-        transform: translateX(-50%);
+        transform: translate(-50%, -0%);
         display: flex;
         align-items: center;
         color: white;
@@ -36,26 +36,22 @@
         text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     }
 
-    #volume-container label {
-        margin-right: 10px;
-    }
-
     #volume-slider {
         width: 300px;
         height: 20px;
     }
 
     #volume {
-        width: 100%;
+        width: 1%;
     }
 
     /* Project logo */
     #logo {
-        position: flex;
-        top: 0.5;
-        right: 0.5;
-        width: 50px;
-        height: 50px;
+        position: fixed;
+        bottom: 1%;
+        right: 1%;
+        width: 40px;
+        height: 40px;
         z-index: 1;
     }
 
@@ -87,8 +83,8 @@
 
     #audio-icon {
         position: fixed;
-        bottom: 0px;
-        margin-right: 40px;
+        bottom: 1%;
+        left: 1%;
         width: 40px;
         height: 40px;
         background-color: white;
